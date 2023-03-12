@@ -81,7 +81,7 @@ const verificarLogin = async (email, password) => {
     return true
 }
 
-// vista contactar
+// vista contactar- lo deje suspendido
 //const ContactarSolicitud = async (nombre_cliente, apellido, email, titulo_proyecto, descripcion_proyecto, stack_1, stack_2, stack_3, stack_otros, boceto, presupuesto, programador_id, fecha_solicitud) => {
   //  const comand = 'INSERT INTO solicitudes VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, DEFAULT)RETURNING*'
   
@@ -120,10 +120,16 @@ const crearTablaSolicitudes = async (solicitud_id, titulo_propuesta, descripcion
 
 //orden en proceso 
 
-const MostrarOrdenEnProceso = async () =>
-{
-    const comand = 'SELECT * FROM  propuesta_coder'
-    
+const MostrarOrdenEnProceso = async () => {
+    const llamado = async () => {
+        const comand = 'SELECT * FROM  propuesta_coder'
+        return comand
+    }
+    await llamado()
+   const comand = 'SELECT * FROM  solicitudes'
+   
+   const ordenFinal = await pool.query(command, values)
+   return ordenFinal;
 }
 
 //seguimiento - habria que a la tabla cliente crear una seccion de comentarios
